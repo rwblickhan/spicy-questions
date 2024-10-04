@@ -1,0 +1,49 @@
+{
+  "name": "rwb-frontend-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.tsx": [
+      "eslint",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.js": [
+      "eslint",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "preact": "^10.23.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
+    "prettier": "3.2.4",
+    "stylelint": "^16.8.2",
+    "stylelint-config-standard": "^36.0.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}
