@@ -1,42 +1,57 @@
 import { useState } from "preact/hooks";
-import preactLogo from "./assets/preact.svg";
-import viteLogo from "/vite.svg";
-import classes from "./app.module.css";
-import classNames from "classnames";
+import styles from "./app.module.css";
+import questions from "./questions.json";
+import askholeQuestions from "./askhole_questions.json";
+import askholeExtraQuestions from "./askhole_extra_questions.json";
 
 export function App() {
-  const [count, setCount] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [questionSet, setQuestionSet] = useState<
+    "questions" | "askhole" | "askhole_extra"
+  >("questions");
 
   return (
-    <>
-      <div className={classes.buttons}>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className={classes.logo} alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank" rel="noreferrer">
-          <img
-            src={preactLogo}
-            className={classNames(classes.logo, classes.preact)}
-            alt="Preact logo"
-          />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div className={classes.card}>
+    <div className={styles.container}>
+      <p className={styles.question}>
+        {questionSet === "questions"
+          ? questions[currentQuestionIndex]
+          : questionSet === "askhole"
+            ? askholeQuestions[currentQuestionIndex]
+            : askholeExtraQuestions[currentQuestionIndex]}
+      </p>
+
+      <div className={styles.buttons}>
         <button
           onClick={() => {
-            setCount((count) => count + 1);
+            setQuestionSet("questions");
+            setCurrentQuestionIndex(
+              Math.floor(Math.random() * questions.length)
+            );
           }}
         >
-          count is {count}
+          Random question (Russell&apos;s set)
         </button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
+        <button
+          onClick={() => {
+            setQuestionSet("askhole");
+            setCurrentQuestionIndex(
+              Math.floor(Math.random() * askholeQuestions.length)
+            );
+          }}
+        >
+          Random question (original Askhole set)
+        </button>
+        <button
+          onClick={() => {
+            setQuestionSet("askhole_extra");
+            setCurrentQuestionIndex(
+              Math.floor(Math.random() * askholeExtraQuestions.length)
+            );
+          }}
+        >
+          Random question (Askhole extras set)
+        </button>
       </div>
-      <p className={classes.readthedocs}>
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
