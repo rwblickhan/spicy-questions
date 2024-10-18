@@ -1,6 +1,6 @@
 import { render } from "preact";
 import { App } from "./app.tsx";
-import { setBasePath } from "@shoelace-style/shoelace";
+import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
 
 import "./index.css";
 import "@shoelace-style/shoelace/dist/themes/light.css";
