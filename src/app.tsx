@@ -3,6 +3,7 @@ import styles from "./app.module.css";
 import questions from "./questions.json";
 import askholeQuestions from "./askhole_questions.json";
 import askholeExtraQuestions from "./askhole_extra_questions.json";
+import SlButton from "@shoelace-style/shoelace/dist/react/button/index.js";
 
 export function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -21,7 +22,8 @@ export function App() {
       </p>
 
       <div className={styles.buttons}>
-        <button
+        <SlButton
+          variant={questionSet === "questions" ? "primary" : "default"}
           onClick={() => {
             setQuestionSet("questions");
             setCurrentQuestionIndex(
@@ -30,8 +32,9 @@ export function App() {
           }}
         >
           Random question (Russell&apos;s set)
-        </button>
-        <button
+        </SlButton>
+        <SlButton
+          variant={questionSet === "askhole" ? "primary" : "default"}
           onClick={() => {
             setQuestionSet("askhole");
             setCurrentQuestionIndex(
@@ -40,8 +43,9 @@ export function App() {
           }}
         >
           Random question (original Askhole set)
-        </button>
-        <button
+        </SlButton>
+        <SlButton
+          variant={questionSet === "askhole_extra" ? "primary" : "default"}
           onClick={() => {
             setQuestionSet("askhole_extra");
             setCurrentQuestionIndex(
@@ -50,7 +54,7 @@ export function App() {
           }}
         >
           Random question (Askhole extras set)
-        </button>
+        </SlButton>
       </div>
     </div>
   );
