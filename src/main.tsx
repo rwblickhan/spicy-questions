@@ -1,11 +1,8 @@
 import { render } from "preact";
 import { App } from "./app.tsx";
-import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
 
 import "./index.css";
-import "@shoelace-style/shoelace/dist/themes/light.css";
-
-setBasePath("./shoelace_assets");
+import "./pico.css";
 
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 

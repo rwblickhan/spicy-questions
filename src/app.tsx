@@ -3,7 +3,7 @@ import styles from "./app.module.css";
 import questions from "./questions.json";
 import askholeQuestions from "./askhole_questions.json";
 import askholeExtraQuestions from "./askhole_extra_questions.json";
-import SlButton from "@shoelace-style/shoelace/dist/react/button/index.js";
+import classNames from "classnames";
 
 export function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -22,8 +22,12 @@ export function App() {
       </p>
 
       <div className={styles.buttons}>
-        <SlButton
-          variant={questionSet === "questions" ? "primary" : "default"}
+        <button
+          className={classNames(
+            "outline",
+            questionSet === "questions" ? "" : "secondary"
+          )}
+          // variant={questionSet === "questions" ? "primary" : "default"}
           onClick={() => {
             setQuestionSet("questions");
             setCurrentQuestionIndex(
@@ -32,9 +36,12 @@ export function App() {
           }}
         >
           Random question (Russell&apos;s set)
-        </SlButton>
-        <SlButton
-          variant={questionSet === "askhole" ? "primary" : "default"}
+        </button>
+        <button
+          className={classNames(
+            "outline",
+            questionSet === "askhole" ? "" : "secondary"
+          )}
           onClick={() => {
             setQuestionSet("askhole");
             setCurrentQuestionIndex(
@@ -43,9 +50,12 @@ export function App() {
           }}
         >
           Random question (original Askhole set)
-        </SlButton>
-        <SlButton
-          variant={questionSet === "askhole_extra" ? "primary" : "default"}
+        </button>
+        <button
+          className={classNames(
+            "outline",
+            questionSet === "askhole_extra" ? "" : "secondary"
+          )}
           onClick={() => {
             setQuestionSet("askhole_extra");
             setCurrentQuestionIndex(
@@ -54,7 +64,7 @@ export function App() {
           }}
         >
           Random question (Askhole extras set)
-        </SlButton>
+        </button>
       </div>
     </div>
   );
